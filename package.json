@@ -13,6 +13,7 @@
     "@heroui/styles": "^3.0.3",
     "animate.css": "^4.1.1",
     "better-auth": "^1.6.9",
+    "daisyui": "^5.5.19",
     "mongodb": "^7.2.0",
     "next": "^16.2.4",
     "react": "^19.2.5",
@@ -22,13 +23,11 @@
     "react-toastify": "^11.1.0"
   },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "16.2.4",
-    "tailwindcss": "^4",
     "typescript": "^5"
   }
 }
