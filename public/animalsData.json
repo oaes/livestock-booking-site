@@ -9,7 +9,7 @@
     "age": 3,
     "location": "Bogura",
     "description": "Healthy deshi cow suitable for Qurbani. Well fed with natural খাবার.",
-    "image": "./cows/01.jfif",
+    "image": "/01.jfif",
     "category": "Large Animal"
   },
   {
@@ -22,7 +22,7 @@
     "age": 4,
     "location": "Rajshahi",
     "description": "High-quality Sahiwal cow, বড় আকার এবং স্বাস্থ্যবান।",
-    "image": "./cows/02.jfif",
+    "image": "/02.jfif",
     "category": "Large Animal"
   },
   {
@@ -35,7 +35,7 @@
     "age": 3.5,
     "location": "Dhaka",
     "description": "Imported breed, excellent health and বড় সাইজের কোরবানির জন্য উপযুক্ত।",
-    "image": "./cows/03.jfif",
+    "image": "/03.jfif",
     "category": "Large Animal"
   },
   {
@@ -48,7 +48,7 @@
     "age": 1.5,
     "location": "Kushtia",
     "description": "বাংলাদেশের জনপ্রিয় Black Bengal ছাগল, সুস্বাদু মাংসের জন্য বিখ্যাত।",
-    "image": "./cows/04.jfif",
+    "image": "/04.jfif",
     "category": "Small Animal"
   },
   {
@@ -61,7 +61,7 @@
     "age": 2,
     "location": "Chattogram",
     "description": "Large size Beetal goat, ভালোভাবে পালন করা হয়েছে এবং কোরবানির জন্য উপযুক্ত।",
-    "image": "./cows/05.png",
+    "image": "/05.png",
     "category": "Small Animal"
   },
   {
@@ -74,7 +74,7 @@
     "age": 2.5,
     "location": "Sylhet",
     "description": "Jamunapari জাতের বড় ছাগল, আকর্ষণীয় এবং স্বাস্থ্যবান।",
-    "image": "./cows/06.png",
+    "image": "/06.png",
     "category": "Small Animal"
   }
 ]

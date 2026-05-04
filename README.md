@@ -1,36 +1,178 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🐄 Livestock Booking Platform
 
-## Getting Started
+A modern **livestock marketplace web application** built with Next.js, where users can browse, view, and book animals for Qurbani or farming purposes.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+* 🐂 Browse animals (Cow, Goat, etc.)
+* 🔍 Detailed animal view page
+* 💰 Price & weight display
+* 🖼️ Optimized image handling (Next.js Image)
+* 🔐 Authentication system (Better Auth)
+* 🌐 Fully responsive UI (TailwindCSS + DaisyUI)
+* ⚡ Fast performance with Next.js App Router
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend:** Next.js 16 (App Router)
+* **Styling:** Tailwind CSS + DaisyUI
+* **Authentication:** Better Auth
+* **Database:** MongoDB
+* **Deployment:** Vercel
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+ ├── app/
+ │   ├── page.js
+ │   ├── all-animals/
+ │   └── profile/
+ │
+ ├── components/
+ │   └── homepage/
+ │       ├── AnimalCard.jsx
+ │       ├── Featured.jsx
+ │
+ ├── lib/
+ │   ├── auth.js
+ │   └── fetchData.js
+ │
+ ├── data/
+ │   └── animalsData.json
+ │
+public/
+ ├── cows/
+ ├── goats/
+ └── placeholder.jpg
+```
+
+---
+
+## ⚙️ Installation & Setup
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/oaes/livestock-booking-site.git
+cd livestock-booking-site
+```
+
+---
+
+### 2️⃣ Install dependencies
+
+```bash
+npm install
+```
+
+---
+
+### 3️⃣ Setup environment variables
+
+Create a `.env.local` file:
+
+```env
+MONGO_URI=your_mongodb_connection_string
+BETTER_AUTH_SECRET=your_secret_key
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
+
+---
+
+### 4️⃣ Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🖼️ Image Rules (IMPORTANT)
 
-To learn more about Next.js, take a look at the following resources:
+All images must be inside `/public` folder.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### ✅ Correct:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+/public/cows/01.jfif
+→ use "/cows/01.jfif"
+```
 
-## Deploy on Vercel
+### ❌ Wrong:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```
+./cows/01.jfif
+/public/cows/01.jfif
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 📦 Data Handling
+
+Animals data is currently stored in:
+
+```
+/src/data/animalsData.json
+```
+
+For production, you can switch to:
+
+* MongoDB
+* API routes (`/api/animals`)
+
+---
+
+## 🔐 Authentication
+
+Using **Better Auth** with MongoDB.
+
+API route:
+
+```
+/api/auth/[...all]
+```
+
+---
+
+## 🚀 Deployment
+
+Deployed easily on Vercel:
+
+1. Push to GitHub
+2. Connect repo to Vercel
+3. Add environment variables
+4. Deploy
+
+---
+
+## ⚠️ Known Issues
+
+* Image paths must be correct (`/public` only)
+* Missing env variables may break auth
+* Build may fail if fetching local URLs during build
+
+---
+
+## 📌 Future Improvements
+
+* 🧑‍💼 Admin dashboard (Add/Edit/Delete animals)
+* ❤️ Wishlist / Favorites
+* 💳 Payment integration
+* 📱 Mobile app version
+* 🔎 Advanced filtering & search
+
+---
