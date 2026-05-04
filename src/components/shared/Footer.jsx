@@ -23,15 +23,15 @@ const Footer = () => {
             <p className="font-bold">About</p>
             <p>
               We provide 100% Halal <br></br> Qurbani Animals. Browse animals,
-              compare prices, and<br></br> book securely from verified sellers.
+              compare prices, and<br></br>book securely from verified sellers.
             </p>
           </div>
           <div className="space-y-2">
             <h2 className="font-bold text-2xl">Contact Info</h2>
             <div className="space-y-2">
-              <p>Location: Dhaka, Bangladesh</p>
-              <p>Phone: 018xxxxxxxxx</p>
-              <p>Email: mycompany@gmail.com </p>
+              <p>Location:Dhaka,Bangladesh</p>
+              <p>Phone:018xxxxxxxxx</p>
+              <p>Email:mycompany@gmail.com </p>
             </div>
           </div>
 

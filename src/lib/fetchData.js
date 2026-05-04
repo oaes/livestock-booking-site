@@ -1,6 +1,11 @@
- 
- export const getAnimalsData =async()=>{
-    const res = await fetch("https://qurbani-hat-henna.vercel.app/animalsData.json");
-    const animals = await res.json();
-    return animals;
- }
+export const getAnimalsData = async () => {
+  const res = await fetch(
+    "https://livestock-booking-site.vercel.app/animalsData.json"
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch animals data");
+  }
+
+  return res.json();
+};
