@@ -4,17 +4,24 @@ import { mongodbAdapter } from "better-auth/adapters/mongodb";
 
 const mongoUri = process.env.MONGO_URI;
 
-if (!mongoUri) {
-  throw new Error("MONGO_URI is not defined");
-}
+const isBuild = process.env.NODE_ENV === "production" && !process.env.VERCEL && !process.env.NETLIFY;
 
-const client = new MongoClient(mongoUri);
-const db = client.db("qurbaniHat");
+let client;
+let db;
+
+if (mongoUri) {
+  client = new MongoClient(mongoUri);
+  db = client.db("qurbanibazer");
+} else {
+  console.warn("⚠️ MONGO_URI is missing (build phase)");
+}
 
 const baseURL =
   process.env.AUTH_URL ||
   (process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
+    : process.env.URL 
+    ? process.env.URL
     : "http://localhost:3000");
 
 export const auth = betterAuth({
@@ -22,9 +29,10 @@ export const auth = betterAuth({
 
   secret: process.env.AUTH_SECRET || "dev-secret",
 
-  database: mongodbAdapter(db, {
-    client,
-  }),
+
+  database: db
+    ? mongodbAdapter(db, { client })
+    : undefined,
 
   emailAndPassword: {
     enabled: true,

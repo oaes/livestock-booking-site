@@ -1,6 +1,5 @@
 
 import AnimalCard from "../../components/homepage/AnimalCard"
-// import { getAnimalsData } from '@/lib/fetchData';
 import {getAnimalsData} from "../../lib/fetchData"
 import Link from 'next/link';
 
