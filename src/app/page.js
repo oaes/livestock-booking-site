@@ -1,16 +1,15 @@
-// import Banner from "@/components/homePage/Banner";
-import Banner from "../components/homepage/Banner.jsx"
-import FeaturedAnimals from "@/components/homePage/FeaturedAnimals";
-import TipsAndBreeds from "@/components/homePage/TipsAndBreeds";
+import Banner from "../components/homepage/Banner.jsx";
 
+import Featured from "../components/homepage/Featured.jsx";
+
+import Tips from "../components/homepage/Tips.jsx";
 
 export default function Home() {
   return (
-     <div>
+    <div>
       <Banner></Banner>
-      <FeaturedAnimals></FeaturedAnimals>
-      <TipsAndBreeds></TipsAndBreeds>
-     
-     </div>
+      <Featured></Featured>
+      <Tips></Tips>
+    </div>
   );
 }

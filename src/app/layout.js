@@ -1,11 +1,10 @@
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-// import Navbar from "@/components/shared/Navbar";
-import Navbar from "../components/shared/NavBar.jsx"
-import Footer from "@/components/shared/Footer";
-import 'animate.css';
+import Navbar from "../components/shared/NavBar.jsx";
+import Footer from "../components/shared/Footer.jsx";
+import "animate.css";
 import { ToastContainer } from "react-toastify";
-
+import { Geist, Geist_Mono } from "next/font/google";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,12 +28,10 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar></Navbar>
-        <main>
-          {children}
-        </main>
+        <main>{children}</main>
         <Footer></Footer>
-         <ToastContainer />
-        </body>
+        <ToastContainer />
+      </body>
     </html>
   );
 }

@@ -1,6 +1,7 @@
 
-import AnimalsCard from '@/components/homePage/AnimalsCard';
-import { getAnimalsData } from '@/lib/fetchData';
+import AnimalCard from "../../components/homepage/AnimalCard"
+// import { getAnimalsData } from '@/lib/fetchData';
+import {getAnimalsData} from "../../lib/fetchData"
 import Link from 'next/link';
 
 const AllAnimalsPage = async ({searchParams}) => {
@@ -32,7 +33,7 @@ const AllAnimalsPage = async ({searchParams}) => {
             <div>
                 <div className='grid grid-cols-1 md:grid-cols-4 gap-4 mt-10'>
                     {
-                        sortedAnimals.map(animal => <AnimalsCard key={animal.id} animal={animal}></AnimalsCard>)
+                        sortedAnimals.map(animal => <AnimalCard key={animal.id} animal={animal}></AnimalCard>)
                     }
                 </div>
             </div>

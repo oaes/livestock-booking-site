@@ -1,6 +1,6 @@
-import { getAnimalsData } from '@/lib/fetchData';
+import {getAnimalsData} from "../../lib/fetchData";
 import React from 'react';
-import AnimalsCard from './AnimalsCard';
+import AnimalCard from './AnimalCard';
 
 const Featured = async() => {
     const allAnimals = await getAnimalsData();
@@ -11,7 +11,7 @@ const Featured = async() => {
             <h1 className=' font-bold text-4xl text-center'>Featured animals</h1>
             <div className='grid grid-cols-1 md:grid-cols-4 gap-8 mt-10'>
                 {
-                    animals.map(animal => <AnimalsCard key={animal.id} animal={animal}></AnimalsCard>)
+                    animals.map(animal => <AnimalCard key={animal.id} animal={animal}></AnimalCard>)
                 }
             </div>
         </div>
