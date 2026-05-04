@@ -1,5 +1,5 @@
 'use client'
-import { authClient } from "@/lib/auth-client";
+import {authClient} from "../../lib/auth-client"
 import { Check } from "@gravity-ui/icons";
 import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";

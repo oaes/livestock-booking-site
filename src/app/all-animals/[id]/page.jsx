@@ -1,5 +1,5 @@
-import BookNow from '@/components/homePage/BookNow';
-import { getAnimalsData } from '@/lib/fetchData';
+import BookNow from "../../../components/homepage/BookNow"
+import {getAnimalsData} from "../../../lib/fetchData"
 import { Card } from '@heroui/react';
 import Image from 'next/image';
 import React from 'react';
