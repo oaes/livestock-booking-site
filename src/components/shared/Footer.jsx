@@ -13,8 +13,8 @@ const Footer = () => {
             <Image
               src={"/images/logo.png"}
               alt="footer logo"
-              width={120}
-              height={100}
+              width={300}
+              height={300}
               className="object-cover rounded-full ml-6 "
             />
             <h2 className="font-bold mt-2">Qurbani Bazer</h2>

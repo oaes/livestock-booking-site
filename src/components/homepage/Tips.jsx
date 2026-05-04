@@ -20,7 +20,7 @@ const Tips = () => {
             Quick checks for a healthy choice
           </h2>
 
-          <div className="card bg-base-100 text-black shadow-xl p-6 space-y-4">
+          <div className="card bg-base-100 text-white shadow-xl p-6 space-y-4">
 
             <div className="flex gap-3 items-start">
               <IoCheckmarkCircleOutline className="text-purple-600 text-2xl mt-1" />
@@ -63,7 +63,7 @@ const Tips = () => {
             Top Breeds
           </h2>
 
-          <div className="card bg-base-100 text-black shadow-xl p-6 space-y-4">
+          <div className="card bg-base-100 text-white shadow-xl p-6 space-y-4">
 
             <div className="flex gap-3 items-start">
               <LuBicepsFlexed className="text-purple-600 text-2xl mt-1" />
