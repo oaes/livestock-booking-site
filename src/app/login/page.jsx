@@ -1,5 +1,5 @@
 "use client";
-import {authClient} from "../../lib/auth-client"
+import { authClient } from "../../lib/auth-client";
 import { Check } from "@gravity-ui/icons";
 import {
   Button,
@@ -34,7 +34,7 @@ const LoginPage = () => {
     toast.error(error)
    }
    else{
-    toast.success("SignIn successfully!")
+    toast.success("Login successfully!")
    }
     console.log(email,password)
 
@@ -48,10 +48,10 @@ const LoginPage = () => {
 
   return (
     <div>
-     <Card className="border mx-auto w-125 py-10 my-8">
+     <Card className="shadow-md md:mx-auto md:w-125 py-5 my-8">
       <h1 className="text-center text-2xl font-bold">Login</h1>
 
-      <Form className="flex w-96 mx-auto flex-col gap-4" onSubmit={onSubmit}>
+      <Form className="flex w-full   mx-auto flex-col gap-4" onSubmit={onSubmit}>
         <TextField
           isRequired
           name="email"

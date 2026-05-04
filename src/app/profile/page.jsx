@@ -1,121 +1,25 @@
 'use client'
+import {UpdateProfile} from "../../components/homepage/UpdateProfile"
 import {authClient} from "../../lib/auth-client"
-import { Check } from "@gravity-ui/icons";
-import { Button, Card, Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { GrGoogle } from "react-icons/gr";
-import { toast } from "react-toastify";
+import { Avatar, Card } from '@heroui/react';
+import React from 'react';
 
-
-const RegisterPage = () => {
-    const router = useRouter();
-    const onSubmit = async (e) => {
-        e.preventDefault();
-        const name = e.target.name.value;
-        const email = e.target.email.value;
-        const password = e.target.password.value;
-        const image = e.target.image.value;
-
-        const { data, error } = await authClient.signUp.email({
-            name, // required
-            email, // required
-            password, // required
-            image
-        });
-        if (error) {
-            toast.error(error)
-        }
-        else {
-            toast.success("Register successfully!")
-        }
-        console.log(name, image, email, password)
-        if (!error) {
-            router.push('/')
-        }
-
-    }
-     const handleGoogleSignIn = async()=>{
-        const data = await authClient.signIn.social({
-         provider: "google",
-      });
-      }
+const MyProfilePage = () => {
+    const userData = authClient.useSession();
+    const user = userData.data?.user;
     return (
-        <Card className="border  mx-auto w-125 py-5 my-8">
-            <h1 className="text-center text-2xl font-bold">Register</h1>
-
-            <Form className="flex w-100 mx-auto flex-col gap-4" onSubmit={onSubmit}>
-                <TextField isRequired name="name" type="text">
-                    <Label>Name</Label>
-                    <Input placeholder="Enter your name" />
-                    <FieldError />
-                </TextField>
-
-                <TextField isRequired name="image" type="text">
-                    <Label>Image URL</Label>
-                    <Input placeholder="Image URL" />
-                    <FieldError />
-                </TextField>
-
-                <TextField
-                    isRequired
-                    name="email"
-                    type="email"
-                    validate={(value) => {
-                        if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-                            return "Please enter a valid email address";
-                        }
-
-                        return null;
-                    }}
-                >
-                    <Label>Email</Label>
-                    <Input placeholder="john@example.com" />
-                    <FieldError />
-                </TextField>
-
-                <TextField
-                    isRequired
-                    minLength={8}
-                    name="password"
-                    type="password"
-                    validate={(value) => {
-                        if (value.length < 8) {
-                            return "Password must be at least 8 characters";
-                        }
-                        if (!/[A-Z]/.test(value)) {
-                            return "Password must contain at least one uppercase letter";
-                        }
-                        if (!/[0-9]/.test(value)) {
-                            return "Password must contain at least one number";
-                        }
-
-                        return null;
-                    }}
-                >
-                    <Label>Password</Label>
-                    <Input placeholder="Enter your password" />
-                    <Description>
-                        Must be at least 8 characters with 1 uppercase and 1 number
-                    </Description>
-                    <FieldError />
-                </TextField>
-
-                <div className="flex gap-2">
-                    <Button type="submit">
-                        <Check />
-                        Register
-                    </Button>
-                    <Button type="reset" variant="secondary">
-                        Reset
-                    </Button>
-                </div>
-            </Form>
-             <p className="text-center text-gray-600 mt-2 text-xl">Have a account! Please <Link href={'/Login'} className="text-blue-700">Login</Link></p>
-                  <p className="text-center text-gray-600">OR</p>
-                  <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full '}><GrGoogle/> Sign in with Google</Button>
-        </Card>
+        <div className='my-30'>
+            <Card className='max-w-100 mx-auto flex flex-col  items-center shadow-md'>
+                <Avatar className='w-40 h-40'>
+                    <Avatar.Image alt={user?.name} src={user?.image} referrerPolicy='no-referrer' className='w-full object-cover' />
+                    <Avatar.Fallback>{user?.name[0]}</Avatar.Fallback>
+                </Avatar>
+               <h2 className='font-bold text-xl'>{user?.name}</h2>
+               <p className='text-gray-600'>{user?.email}</p>
+               <UpdateProfile></UpdateProfile>
+            </Card>
+        </div>
     );
 };
 
-export default RegisterPage;
+export default MyProfilePage;

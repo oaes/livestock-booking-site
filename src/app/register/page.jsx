@@ -41,10 +41,10 @@ const RegisterPage = () => {
       });
       }
     return (
-        <Card className="border  mx-auto w-125 py-5 my-8">
+        <Card className="shadow-md  mx-auto md:w-125 py-5  my-8">
             <h1 className="text-center text-2xl font-bold">Register</h1>
 
-            <Form className="flex w-100 mx-auto flex-col gap-4" onSubmit={onSubmit}>
+            <Form className="flex w-full mx-auto flex-col gap-4" onSubmit={onSubmit}>
                 <TextField isRequired name="name" type="text">
                     <Label>Name</Label>
                     <Input placeholder="Enter your name" />
@@ -111,7 +111,7 @@ const RegisterPage = () => {
                     </Button>
                 </div>
             </Form>
-             <p className="text-center text-gray-600 mt-2 text-xl">Have a account! Please <Link href={'/Login'} className="text-blue-700">Login</Link></p>
+             <p className="text-center text-gray-600 mt-2 text-xl">Have a account! Please <Link href={'/login'} className="text-blue-700">Login</Link></p>
                   <p className="text-center text-gray-600">OR</p>
                   <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full '}><GrGoogle/> Sign in with Google</Button>
         </Card>
