@@ -18,7 +18,7 @@ const Banner = () => {
         href="/all-animals"
         className="flex gap-2 items-center text-white animate__animated animate__pulse animate__infinite"
       >
-        Browse Animals <FiArrowUpRight />
+        Book Your Animals <FiArrowUpRight />
       </Link>
     </button>
 

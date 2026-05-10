@@ -16,29 +16,33 @@ import { GrGoogle } from "react-icons/gr";
 import { toast } from "react-toastify";
 
 const LoginPage = () => {
-   const onSubmit = async (e) => {
-    e.preventDefault();
-    const name = e.target.name.value;
-    const image = e.target.image.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+const onSubmit = async (e) => {
+  e.preventDefault();
+
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+
+  try {
 
     const { data, error } = await authClient.signIn.email({
-    email: email, // required
-    password: password, // required
-     rememberMe: true,
-    callbackURL: "/",
-   });
+      email,
+      password,
+      rememberMe: true,
+      callbackURL: "/",
+    });
 
-   if(error){
-    toast.error(error)
-   }
-   else{
-    toast.success("Login successfully!")
-   }
-    console.log(email,password)
+    if (error) {
+      toast.error(error.message || "Login failed");
+      return;
+    }
 
-  };
+    toast.success("Login successful!");
+
+  } catch (err) {
+    console.log(err);
+    toast.error("Something went wrong");
+  }
+};
 
      const handleGoogleSignIn = async()=>{
     const data = await authClient.signIn.social({
