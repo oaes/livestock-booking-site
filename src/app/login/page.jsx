@@ -1,122 +1,197 @@
 "use client";
+
 import { authClient } from "../../lib/auth-client";
-import { Check } from "@gravity-ui/icons";
 import {
   Button,
   Card,
-  Description,
   FieldError,
   Form,
   Input,
   Label,
   TextField,
 } from "@heroui/react";
+
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { GrGoogle } from "react-icons/gr";
+import { FiLock, FiMail } from "react-icons/fi";
 import { toast } from "react-toastify";
 
 const LoginPage = () => {
-const onSubmit = async (e) => {
-  e.preventDefault();
 
-  const email = e.target.email.value;
-  const password = e.target.password.value;
+  const router = useRouter();
 
-  try {
+  const onSubmit = async (e) => {
+    e.preventDefault();
 
-    const { data, error } = await authClient.signIn.email({
-      email,
-      password,
-      rememberMe: true,
-      callbackURL: "/",
-    });
+    const email = e.target.email.value;
+    const password = e.target.password.value;
 
-    if (error) {
-      toast.error(error.message || "Login failed");
-      return;
+    try {
+
+      const { error } = await authClient.signIn.email({
+        email,
+        password,
+        rememberMe: true,
+        callbackURL: "/",
+      });
+
+      if (error) {
+        toast.error(error.message || "Login failed");
+        return;
+      }
+
+      toast.success("Login successful!");
+      router.push("/");
+
+    } catch (err) {
+      console.log(err);
+      toast.error("Something went wrong");
     }
+  };
 
-    toast.success("Login successful!");
+  const handleGoogleSignIn = async () => {
+    try {
 
-  } catch (err) {
-    console.log(err);
-    toast.error("Something went wrong");
-  }
-};
+      await authClient.signIn.social({
+        provider: "google",
+        callbackURL: "/",
+      });
 
-     const handleGoogleSignIn = async()=>{
-    const data = await authClient.signIn.social({
-     provider: "google",
-  });
-  }
+    } catch (err) {
+      console.log(err);
+      toast.error("Google Sign-In Failed");
+    }
+  };
 
   return (
-    <div>
-     <Card className="shadow-md md:mx-auto md:w-125 py-5 my-8">
-      <h1 className="text-center text-2xl font-bold">Login</h1>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black px-4">
 
-      <Form className="flex w-full   mx-auto flex-col gap-4" onSubmit={onSubmit}>
-        <TextField
-          isRequired
-          name="email"
-          type="email"
-          validate={(value) => {
-            if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(value)) {
-              return "Please enter a valid email address";
-            }
+      <Card className="w-full max-w-md bg-white/10 backdrop-blur-xl border border-white/20 shadow-2xl rounded-3xl">
 
-            return null;
-          }}
-        >
-          <Label>Email</Label>
-          <Input placeholder="john@example.com" />
-          <FieldError />
-        </TextField>
+        <div className="p-8">
 
-        <TextField
-          isRequired
-          minLength={8}
-          name="password"
-          type="password"
-          validate={(value) => {
-            if (value.length < 8) {
-              return "Password must be at least 8 characters";
-            }
-            if (!/[A-Z]/.test(value)) {
-              return "Password must contain at least one uppercase letter";
-            }
-            if (!/[0-9]/.test(value)) {
-              return "Password must contain at least one number";
-            }
+          <div className="text-center mb-8">
 
-            return null;
-          }}
-        >
-          <Label>Password</Label>
-          <Input placeholder="Enter your password" />
-          <Description>
-            Must be at least 8 characters with 1 uppercase and 1 number
-          </Description>
-          <FieldError />
-        </TextField>
+            <h1 className="text-4xl font-bold text-white">
+              Welcome Back
+            </h1>
 
-        <div className="flex gap-2">
-          <Button type="submit">
-            <Check />
-            Login
-          </Button>
-          <Button type="reset" variant="secondary">
-            Reset
-          </Button>
+            <p className="text-gray-300 mt-2">
+              Login to continue your journey
+            </p>
+
+          </div>
+
+          <Form
+            onSubmit={onSubmit}
+            className="flex flex-col gap-5"
+          >
+
+            <TextField
+              isRequired
+              name="email"
+              type="email"
+              className="w-full"
+            >
+
+              <Label className="text-white">
+                Email: 
+              </Label>
+
+              <Input
+                startContent={<FiMail className="text-gray-400" />}
+                placeholder="john@example.com"
+                className="text-white"
+              />
+
+              <FieldError />
+
+            </TextField>
+
+            <TextField
+              isRequired
+              name="password"
+              type="password"
+              className="w-full"
+            >
+
+              <Label className="text-white">
+                Password: 
+              </Label>
+
+              <Input
+                startContent={<FiLock className="text-gray-400" />}
+                placeholder="Enter your password"
+                className="text-white"
+              />
+
+              <FieldError />
+
+            </TextField>
+
+            <div className="flex justify-end w-full">
+
+              <Link
+                href="/forgot-password"
+                className="text-sm text-blue-400 hover:text-blue-300 transition"
+              >
+                Forgot Password?
+              </Link>
+
+            </div>
+
+            <Button
+              type="submit"
+              className="w-full h-12 text-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white rounded-xl transition-all duration-300"
+            >
+              Login
+            </Button>
+
+          </Form>
+
+          <div className="flex items-center gap-3 my-6">
+
+            <div className="flex-1 h-[1px] bg-gray-700"></div>
+
+            <p className="text-gray-400 text-sm">
+              OR CONTINUE WITH
+            </p>
+
+            <div className="flex-1 h-[1px] bg-gray-700"></div>
+
+          </div>
+
+       <Button
+  onClick={handleGoogleSignIn}
+  className="w-full h-12 bg-white hover:bg-gray-100 text-black rounded-xl font-medium flex items-center justify-center gap-3"
+>
+  <GrGoogle className="text-xl shrink-0" />
+
+  <span>
+    Sign up with Google
+  </span>
+</Button>
+
+          <p className="text-center text-gray-300 mt-8">
+
+            Don&apos;t have an account?
+
+            <Link
+              href="/register"
+              className="text-blue-400 hover:text-blue-300 ml-2 font-semibold"
+            >
+              Register
+            </Link>
+
+          </p>
+
         </div>
-      </Form>
-      <p className="text-center text-gray-600 mt-2 text-xl">Don`t have account? Please <Link href={'/register'} className="text-blue-700">Register</Link></p>
-      <p className="text-center text-gray-600">OR</p>
-      <Button onClick={handleGoogleSignIn} variant="outline" className={'w-full '}><GrGoogle/> Sign in with Google</Button>
-    </Card>
+
+      </Card>
+
     </div>
   );
-    
 };
 
-export default LoginPage;
+export default LoginPage
